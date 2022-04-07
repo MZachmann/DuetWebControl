@@ -25,7 +25,7 @@
 					<v-card-title>
 						<strong>Requested Speed</strong>
 					</v-card-title>
-					<v-card-text>{{ $display(move.currentMove.requestedSpeed, 0, 'mm/s') }}</v-card-text>
+					<v-card-text>{{ $display(move.currentMove.requestedSpeed, 1, 'mm/s') }}</v-card-text>
 				</v-card>
 			</v-col>
 			<v-col cols="4" lg="3" md="3" order="2" order-lg="4" sm="4">
@@ -33,7 +33,7 @@
 					<v-card-title>
 						<strong>Top Speed</strong>
 					</v-card-title>
-					<v-card-text>{{ $display(move.currentMove.topSpeed, 0, 'mm/s') }}</v-card-text>
+					<v-card-text>{{ $display(move.currentMove.topSpeed, 1, 'mm/s') }}</v-card-text>
 				</v-card>
 			</v-col>
 			<v-col cols="12" order="6" v-if="sensorsPresent">
@@ -42,9 +42,9 @@
 						<v-col class="category-header" tag="strong">{{ $t('panel.status.sensors') }}</v-col>
 					</v-card-title>
 					<v-card-text>
-						<v-row class="flex-nowrap" no-gutters>
-							<v-col>
-								<v-row align-content="center" justify="center" no-gutters>
+						<!-- <v-row class="flex-nowrap" no-gutters>
+							<v-col> -->
+								<v-row  align-content="center" justify="center" no-gutters>
 									<v-col class="d-flex flex-column align-center" v-if="boards.length && boards[0].vIn.current > 0">
 										<strong>{{ $t('panel.status.vIn') }}</strong>
 										<v-tooltip bottom>
@@ -101,8 +101,8 @@
 									</v-col>
 
 								</v-row>
-							</v-col>
-						</v-row>
+							<!-- </v-col>
+						</v-row> -->
 					</v-card-text>
 				</v-card>
 			</v-col>
