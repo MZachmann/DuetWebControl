@@ -21,7 +21,7 @@
 </style>
 
 <template>
-	<v-card>
+	<v-card class="py-0">
 		<v-card-title class="py-2">
 			<strong>{{ machinePosition ? $t('panel.status.machinePosition') : $t('panel.status.toolPosition') }} </strong>
 		</v-card-title>
