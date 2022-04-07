@@ -21,6 +21,7 @@
 			<v-switch :label="$t('panel.settingsAppearance.bottomNavigation')" hide-details v-model="bottomNavigation"></v-switch>
 			<v-switch :label="$t('panel.settingsAppearance.numericInputs')" hide-details v-model="numericInputs"></v-switch>
 			<v-switch :label="$t('panel.settingsAppearance.iconMenu')" hide-details v-model="iconMenu"></v-switch>
+			<v-text-field v-model.number="decimalPlaces" type="number" step="any" min="0" :label="$t('panel.settingsAppearance.decimalPlaces', ['ms'])" hide-details></v-text-field>
 		</v-card-text>
 	</v-card>
 </template>
@@ -38,6 +39,10 @@ export default {
 		darkTheme: {
 			get() { return this.settings.darkTheme; },
 			set(value) { this.update({ darkTheme: value }); }
+		},
+		decimalPlaces: {
+			get() { return this.settings.decimalPlaces; },
+			set(value) { this.update({ decimalPlaces: value }); }
 		},
 		language: {
 			get() { return this.settings.language; },

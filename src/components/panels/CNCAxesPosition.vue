@@ -44,6 +44,7 @@
 'use strict'
 
 import { mapState } from 'vuex';
+import store from '@/store'
 
 export default {
     props: {
@@ -64,7 +65,7 @@ export default {
     methods: {
         displayAxisPosition(axis) {
             const position = this.machinePosition ? axis.machinePosition : axis.userPosition;
-            return axis.letter === 'Z' ? this.$displayZ(position, false) : this.$display(position, 1);
+            return axis.letter === 'Z' ? this.$displayZ(position, false) : this.$display(position, store.state.settings.decimalPlaces);
         }
     }
 }

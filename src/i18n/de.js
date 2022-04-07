@@ -682,7 +682,8 @@ export default {
             dashboardModeTitle: 'Übersichtsmodus',
             bottomNavigation: 'Untere Navigationsleiste auf Tablets anzeigen',
             numericInputs: 'Numerische Eingaben statt Schiebern anzeigen',
-			iconMenu: 'Kompaktes Symbolmenü benutzen'
+			iconMenu: 'Kompaktes Symbolmenü benutzen',
+			decimalPlaces: 'Number of decimal points in coordinate display'
 		},
         settingsCommunication: {
             caption: 'Kommunikation',

@@ -19,7 +19,7 @@
 			<v-select v-model="currentWorkspace" :items="workCoordinates" class="wcs-selection" hint="Work Coordinate System" @change="updateWorkspaceCoordinate" persistent-hint></v-select>
 		</v-card-title>
 		<v-card-text v-show="visibleAxes.length">
-			<v-row dense>
+<!-- 			<v-row dense>
 				<v-col cols="6" order="1" md="2" order-md="1">
 					<code-btn block v-show="visibleAxes.length" color="primary" code="G28" :title="$t('button.home.titleAll')" class="ml-0 move-btn">
 						{{ $t('button.home.captionAll') }}
@@ -80,7 +80,7 @@
 				<v-col cols="12" order="3" md="2" order-md="3">
 					<v-btn @click="setWorkspaceZero" block class="move-btn">Set Work XYZ</v-btn >
 				</v-col>
-			</v-row>
+			</v-row> -->
 
 			<v-row v-for="(axis, axisIndex) in visibleAxes" :key="axisIndex" dense >
 				<!-- Regular home buttons -->
@@ -127,11 +127,11 @@
 				</v-col>
 			</v-row>
 
-			<v-row dense>
+			<!-- <v-row dense>
 				<v-col>
 					<v-btn color="warning" @click="gotoWorkspaceZero" tile block class="move-btn">{{$t('panel.movement.workzero')}}</v-btn>
 				</v-col>
-			</v-row>
+			</v-row> -->
 		</v-card-text>
 
 		<mesh-edit-dialog :shown.sync="showMeshEditDialog"></mesh-edit-dialog>

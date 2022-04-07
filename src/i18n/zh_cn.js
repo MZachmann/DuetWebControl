@@ -683,7 +683,8 @@ export default {
 			dashboardModeTitle: '控制面板模式',
 			bottomNavigation: '在平板设备上显示底部导航',
 			numericInputs: '显示数字输入字段而不是滑块',
-			iconMenu: '使用简洁的图标菜单'
+			iconMenu: '使用简洁的图标菜单',
+			decimalPlaces: 'Number of decimal points in coordinate display'
 		},
 		settingsCommunication: {
 			caption: '通讯',
