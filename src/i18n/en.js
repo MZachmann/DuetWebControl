@@ -686,7 +686,10 @@ export default {
 			decimalPlaces: 'Number of decimal points in coordinate display',
 			displayUnitsTitle: 'Display coordinate unit of measure',
             unitInches: 'inches',
-            unitMm: 'mm'
+            unitInch: 'in',
+            unitMm: 'mm',
+			unitInchSpeed: 'ipm',
+			unitMmSpeed: 'mm/s'
         },
         settingsCommunication: {
             caption: 'Communication',

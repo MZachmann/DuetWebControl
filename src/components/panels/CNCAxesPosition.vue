@@ -64,24 +64,15 @@ export default {
         },
 		topTitle() {
 			// place the current unit of measure next to the title
-			let suffix = '';
-			if(this.displayUnits == UnitOfMeasure.imperial)
-				suffix = this.$t('panel.settingsAppearance.unitInches');
-			else
-				suffix = this.$t('panel.settingsAppearance.unitMm');
-			suffix = ' (' + suffix + ')';
-			if(this.machinePosition) {
-				return this.$t('panel.status.machinePosition') + suffix;
-			}
-			return this.$t('panel.status.toolPosition') + suffix;
+			let suffix = this.$t((this.displayUnits == UnitOfMeasure.imperial) ? 'panel.settingsAppearance.unitInches' : 'panel.settingsAppearance.unitMm');
+			return this.$t(this.machinePosition ? 'panel.status.machinePosition' : 'panel.status.toolPosition') + 
+						' ('  + suffix + ')';
 		}
     },
     methods: {
         displayAxisPosition(axis) {
-            const position = this.machinePosition ? axis.machinePosition : axis.userPosition;
-			if(this.displayUnits  == UnitOfMeasure.imperial) {
-				return axis.letter === 'Z' ? this.$displayZ(position / 25.4, false) : this.$display(position / 25.4, this.decimalPlaces);
-			}
+            const position = (this.machinePosition ? axis.machinePosition : axis.userPosition) /
+							((this.displayUnits == UnitOfMeasure.imperial) ? 25.4 : 1);
 			return axis.letter === 'Z' ? this.$displayZ(position, false) : this.$display(position, this.decimalPlaces);
         }
     }

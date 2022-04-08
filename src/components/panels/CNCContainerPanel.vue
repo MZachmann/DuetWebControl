@@ -161,9 +161,9 @@ export default {
 	methods: {
 		displaySpeed(speed) {
 			if(this.displayUnits == UnitOfMeasure.imperial) {
-				return this.$display(speed*60/25.4, 1, 'ipm');
+				return this.$display(speed*60/25.4, 1, this.$t('panel.settingsAppearance.unitInchSpeed'));	// to ipm
 			}
-			return this.$display(speed, 1, 'mm/s');
+			return this.$display(speed, 1,  this.$t('panel.settingsAppearance.unitMmSpeed'));
 		},
 		formatProbeValue(values) {
 			if (values.length === 1) {
