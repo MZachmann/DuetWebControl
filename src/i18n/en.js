@@ -683,7 +683,11 @@ export default {
             bottomNavigation: 'Show bottom navigation on tablet devices',
             numericInputs: 'Show numeric input fields instead of sliders',
 			iconMenu: 'Use compact icon menu',
-			decimalPlaces: 'Number of decimal points in coordinate display'
+			decimalPlaces: 'Number of decimal points in coordinate display',
+            displayUnits: 'Show coordinates in inches',
+			displayUnitsTitle: 'Show coordinates in inches',
+            unitInches: 'inches',
+            unitMm: 'mm'
         },
         settingsCommunication: {
             caption: 'Communication',

@@ -23,7 +23,7 @@
 <template>
 	<v-card class="py-0">
 		<v-card-title class="py-2">
-			<strong>{{ machinePosition ? $t('panel.status.machinePosition') : $t('panel.status.toolPosition') }} </strong>
+			<strong>{{ topTitle }} </strong>
 		</v-card-title>
 		<v-card-text>
 			<v-row align-content="center" no-gutters :class="{'large-font' : !machinePosition}">
@@ -44,7 +44,6 @@
 'use strict'
 
 import { mapState } from 'vuex';
-import store from '@/store'
 
 export default {
     props: {
@@ -54,18 +53,34 @@ export default {
         }
     },
     computed: {
+		...mapState(['settings']),
         ...mapState('machine/model', {
             move: state => state.move,
             status: state => state.state.status,
         }),
         visibleAxes() {
             return this.move.axes.filter(axis => axis.visible);
-        }
+        },
+		topTitle() {
+			let suffix = '';
+			if(this.settings.displayUnits)
+				suffix = this.$t('panel.settingsAppearance.unitInches');
+			else
+				suffix = this.$t('panel.settingsAppearance.unitMm');
+			suffix = ' (' + suffix + ')';
+			if(this.machinePosition) {
+				return this.$t('panel.status.machinePosition') + suffix;
+			}
+			return this.$t('panel.status.toolPosition') + suffix;
+		}
     },
     methods: {
         displayAxisPosition(axis) {
             const position = this.machinePosition ? axis.machinePosition : axis.userPosition;
-            return axis.letter === 'Z' ? this.$displayZ(position, false) : this.$display(position, store.state.settings.decimalPlaces);
+			if(!this.settings.displayUnits) {
+				return axis.letter === 'Z' ? this.$displayZ(position, false) : this.$display(position, this.settings.decimalPlaces);
+			}
+			return axis.letter === 'Z' ? this.$displayZ(position / 25.4, false) : this.$display(position / 25.4, this.settings.decimalPlaces);
         }
     }
 }

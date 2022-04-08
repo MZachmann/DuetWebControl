@@ -29,6 +29,8 @@ export default {
         bottomNavigation: true,
         numericInputs: false,
 		iconMenu: false,
+		displayUnits: false,					// true == Imperial for now
+		decimalPlaces: 2,
 
 		settingsStorageLocal: false,
 		settingsSaveDelay: 500,							// ms - how long to wait before settings updates are saved

@@ -21,7 +21,13 @@
 			<v-switch :label="$t('panel.settingsAppearance.bottomNavigation')" hide-details v-model="bottomNavigation"></v-switch>
 			<v-switch :label="$t('panel.settingsAppearance.numericInputs')" hide-details v-model="numericInputs"></v-switch>
 			<v-switch :label="$t('panel.settingsAppearance.iconMenu')" hide-details v-model="iconMenu"></v-switch>
-			<v-text-field v-model.number="decimalPlaces" type="number" step="any" min="0" :label="$t('panel.settingsAppearance.decimalPlaces', ['ms'])" hide-details></v-text-field>
+			<v-text-field v-model.number="decimalPlaces" type="number" step="any" min="0" :label="$t('panel.settingsAppearance.decimalPlaces')" hide-details></v-text-field>
+			<v-tooltip bottom>
+				<template #activator="{ on }">
+					<v-switch :label="$t('panel.settingsAppearance.displayUnits')" hide-details v-model="displayUnits" v-on="on"></v-switch>
+				</template>
+				{{ $t('panel.settingsAppearance.displayUnitsTitle') }}
+			</v-tooltip>
 		</v-card-text>
 	</v-card>
 </template>
@@ -43,6 +49,10 @@ export default {
 		decimalPlaces: {
 			get() { return this.settings.decimalPlaces; },
 			set(value) { this.update({ decimalPlaces: value }); }
+		},
+		displayUnits: {
+			get() { return this.settings.displayUnits; },
+			set(value) { this.update({displayUnits: value}); }
 		},
 		language: {
 			get() { return this.settings.language; },
