@@ -684,8 +684,7 @@ export default {
             numericInputs: 'Show numeric input fields instead of sliders',
 			iconMenu: 'Use compact icon menu',
 			decimalPlaces: 'Number of decimal points in coordinate display',
-            displayUnits: 'Show coordinates in inches',
-			displayUnitsTitle: 'Show coordinates in inches',
+			displayUnitsTitle: 'Display coordinate unit of measure',
             unitInches: 'inches',
             unitMm: 'mm'
         },

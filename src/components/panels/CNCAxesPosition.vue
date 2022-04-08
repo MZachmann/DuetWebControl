@@ -44,6 +44,7 @@
 'use strict'
 
 import { mapState } from 'vuex';
+import { UnitOfMeasure } from '../../store/settings';
 
 export default {
     props: {
@@ -53,7 +54,7 @@ export default {
         }
     },
     computed: {
-		...mapState(['settings']),
+		...mapState('settings', ['displayUnits', 'decimalPlaces']),
         ...mapState('machine/model', {
             move: state => state.move,
             status: state => state.state.status,
@@ -62,8 +63,9 @@ export default {
             return this.move.axes.filter(axis => axis.visible);
         },
 		topTitle() {
+			// place the current unit of measure next to the title
 			let suffix = '';
-			if(this.settings.displayUnits)
+			if(this.displayUnits == UnitOfMeasure.imperial)
 				suffix = this.$t('panel.settingsAppearance.unitInches');
 			else
 				suffix = this.$t('panel.settingsAppearance.unitMm');
@@ -77,10 +79,10 @@ export default {
     methods: {
         displayAxisPosition(axis) {
             const position = this.machinePosition ? axis.machinePosition : axis.userPosition;
-			if(!this.settings.displayUnits) {
-				return axis.letter === 'Z' ? this.$displayZ(position, false) : this.$display(position, this.settings.decimalPlaces);
+			if(this.displayUnits  == UnitOfMeasure.imperial) {
+				return axis.letter === 'Z' ? this.$displayZ(position / 25.4, false) : this.$display(position / 25.4, this.decimalPlaces);
 			}
-			return axis.letter === 'Z' ? this.$displayZ(position / 25.4, false) : this.$display(position / 25.4, this.settings.decimalPlaces);
+			return axis.letter === 'Z' ? this.$displayZ(position, false) : this.$display(position, this.decimalPlaces);
         }
     }
 }

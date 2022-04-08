@@ -22,12 +22,7 @@
 			<v-switch :label="$t('panel.settingsAppearance.numericInputs')" hide-details v-model="numericInputs"></v-switch>
 			<v-switch :label="$t('panel.settingsAppearance.iconMenu')" hide-details v-model="iconMenu"></v-switch>
 			<v-text-field v-model.number="decimalPlaces" type="number" step="any" min="0" :label="$t('panel.settingsAppearance.decimalPlaces')" hide-details></v-text-field>
-			<v-tooltip bottom>
-				<template #activator="{ on }">
-					<v-switch :label="$t('panel.settingsAppearance.displayUnits')" hide-details v-model="displayUnits" v-on="on"></v-switch>
-				</template>
-				{{ $t('panel.settingsAppearance.displayUnitsTitle') }}
-			</v-tooltip>
+			<v-select :items="unitsofMeasure" :label="$t('panel.settingsAppearance.displayUnitsTitle')" class="mt-3" hide-details item-text="value" item-value="value" v-model="displayUnits"></v-select>
 		</v-card-text>
 	</v-card>
 </template>
@@ -38,6 +33,7 @@
 import { mapState, mapMutations } from 'vuex'
 
 import { DashboardMode } from '@/store/settings'
+import { UnitOfMeasure } from '../../store/settings';
 
 export default {
 	computed: {
@@ -87,6 +83,11 @@ export default {
 		dashboardModes() {
 			return Object.keys(DashboardMode).map((key) => {
 				return { key, value: DashboardMode[key] };
+			});
+		},
+		unitsofMeasure() {
+			return Object.keys(UnitOfMeasure).map((key) => {
+				return { key, value: UnitOfMeasure[key] };
 			});
 		},
 		bottomNavigation: {

@@ -16,6 +16,11 @@ export const DashboardMode = {
 	cnc: 'CNC'
 }
 
+export const UnitOfMeasure = {
+	metric: 'mm',
+	imperial: 'inch'
+}
+
 export default {
 	namespaced: true,
 	state: {
@@ -25,11 +30,11 @@ export default {
 		darkTheme: false,
 		useBinaryPrefix: true,
 		disableAutoComplete: false,
-        dashboardMode : DashboardMode.default,
+        dashboardMode: DashboardMode.default,
         bottomNavigation: true,
         numericInputs: false,
 		iconMenu: false,
-		displayUnits: false,					// true == Imperial for now
+		displayUnits: UnitOfMeasure.metric,
 		decimalPlaces: 2,
 
 		settingsStorageLocal: false,
